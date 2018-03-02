@@ -36,6 +36,14 @@ function main(){
 
     var dir=nw.App.argv[0];
 
+    if (typeof(dir)===typeof undefined)
+        document.location="http://wiki.lliurex.net/Inicio%20llx16";
+    else 
+        {
+            document.querySelector("#localHelp").style.display="block";
+            document.querySelector("#loadWindow").style.display="none";
+        }
+
     var path='documents/'+dir;
     var files;
     var indexpath='documents/'+dir+"/index.json";
