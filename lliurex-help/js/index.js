@@ -1,15 +1,20 @@
 
 
-function createMenu(item){
+function createMenu(item, menuid){
     var ul=document.createElement("ul");
+    ul.setAttribute("id", menuid);
+    
+    ul.visiblechild="none";
     ul.setAttribute("class", "list");
+    
     for (i in item){
         var text=document.createTextNode(item[i].item.title);
         var li=document.createElement("li");
+        if (menuid!=="mainMenu") li.style.display="none";
+        li.setAttribute("parent", menuid);
         li.appendChild(text)
         
-        //console.log(item[i].item.filename);
-        //if (item[i].item)
+    
         if(item[i].item.hasOwnProperty("items")){
             // If has own property items, we have to create submenu
             var submenu=createMenu(item[i].item.items);
@@ -32,7 +37,6 @@ function main(){
     var showdown  = require('showdown');
     var converter = new showdown.Converter();
     var fs=require('fs');
-    //var ui=require('nw.gui');
 
     var dir=nw.App.argv[0];
 
@@ -59,11 +63,8 @@ function main(){
 
     // Getting menu
 
-    var menu=createMenu(default_locale);
-    console.log(document.querySelector("#sections"));
+    var menu=createMenu(default_locale, "mainMenu");
     (document.querySelector("#sections")).appendChild(menu);
-    
-
 
 
     // Manage events
@@ -82,11 +83,47 @@ function main(){
             //document.querySelector("#content").remove();
             document.querySelector("#content").innerHTML=html;
         }
+
+
+
       });
       
-          
-      //document.querySelector(".mdDoc").getAttribute("href");
+      
       document.querySelector(".mdDoc").click();
+
+
+      // TO-DO: Posar açò dalt...
+
+      var listitems=document.querySelectorAll("li");
+      for (li=0; li<listitems.length;li++){
+          listitems[li].addEventListener("click",function(e) {
+              e.stopPropagation();
+              //console.log(e.target.parentNode);
+               console.log(e.target);
+               var className = " link ";
+               var haslink=( (" " + e.target.className + " ").replace(/[\n\t]/g, " ").indexOf(" link ") > -1 );
+               console.log(haslink);
+               if (haslink){
+
+                   // Setting children visibility
+                   console.log("***"+e.target.children[0].visiblechild);
+                   console.log(e.target.children[0]);
+                   if (e.target.children[0].visiblechild==="none")
+                        e.target.children[0].visiblechild="block";
+                    else e.target.children[0].visiblechild="none"
+
+                   for (i=0; i<e.target.children[0].children.length; i++){
+                    console.log(i);
+                       console.log(e.target.children[0].children[i]);
+                       
+                       e.target.children[0].children[i].style.display=e.target.children[0].visiblechild;
+                   }
+               }
+
+              
+          });
+          //li.addeventlistener("");
+      }
 
 
 
