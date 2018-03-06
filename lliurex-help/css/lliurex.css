@@ -58,13 +58,20 @@ html,body,.container {
     border-right: 1px solid #BDBDBD;
     overflow-y: auto;
     /*font-size: 0.9em;*/
-    padding-top:100px;
-    padding-bottom:20px;
     /*height: 100%;
     padding-left: 0px;
     margin:0px;*/
-
 }
+
+.langItem:hover{
+    cursor: pointer;
+}
+
+#menu{
+    padding-top:100px;
+    padding-bottom:20px;
+}
+
 
 #content{
     background-color: #ffffff; 
@@ -81,6 +88,38 @@ html,body,.container {
 }
 
 
+ul.list{
+    list-style-type: none;
+    font-size: 0.9em;
+}
+
+.mdDoc:before{
+    content: '';
+    display: block;
+    height: 24px;
+    width: 24px;
+    float: left;
+    background-size: contain;
+    background-position: center;
+    background-image: url("images/page.png");
+    background-repeat: no-repeat;
+    margin-left: -24px;
+}
+
+.link:before{
+    content: '';
+    display: block;
+    height: 24px;
+    width: 24px;
+    float: left;
+    background-size: contain;
+    background-position: center;
+    background-image: url("images/book.png");
+    background-repeat: no-repeat;
+    margin-left: -24px;
+}
+
+
 .mdDoc:hover, .link:hover{
     cursor:pointer;
     color: #757575;
@@ -90,6 +129,19 @@ html,body,.container {
     cursor: pointer;
     color: #ff0000;
 }*/
+
+/*ul {   list-style-type: none; }
+ul li:before {
+    content: '';
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    width: auto;
+    background-size: 24px;
+    background-image: url("images/page.png");
+    background-repeat: no-repeat;
+    margin-right: 0px; }*/
+
 
 /*SPINNER*/
 
