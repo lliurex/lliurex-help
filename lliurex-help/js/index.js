@@ -283,56 +283,62 @@ LliureXHelp.prototype.main=function main(){
     var indexpath='documents/'+self.dir+"/index.json";
     var lang=navigator.language;
 
+    
+
      // Getting info from desktop
     var desktopInfo=self.getDesktopInfo(self.dir, lang);
     
     document.querySelector("#titleName").innerHTML=desktopInfo.name;
     document.querySelector("#titleDesc").innerHTML=desktopInfo.desc;
     document.querySelector("#appIcon").style["background-image"]="url(file://"+desktopInfo.icon+")";
-    appIcon
-
-    //console.log(desktopInfo);
-
-
-    var index=fs.readFileSync(indexpath);
-    self.indexContent=JSON.parse(index);
-    // Getting locales from index file
-    var languages=(Object.keys(self.indexContent));
     
-    // Setting up locale selector ui
-    for (i=0; i<languages.length; i++){
-        var newlang=document.createElement("div");
-        newlang.setAttribute("class", "langItem");
-        //console.log(languages[i]);
-        newlang.innerHTML="["+languages[i]+"]";
-        newlang.setAttribute("localeCode", languages[i]);
-        document.querySelector("#locales").appendChild(newlang);
+    // Check for errors
+    if (fs.existsSync("documets") && !fs.existsSync("documets/"+self.dir) && !fs.existsSync(indexpath))
+    {
+
+        //console.log(desktopInfo);
+
+        var index=fs.readFileSync(indexpath);
+        self.indexContent=JSON.parse(index);
+        // Getting locales from index file
+        var languages=(Object.keys(self.indexContent));
+        
+        // Setting up locale selector ui
+        for (i=0; i<languages.length; i++){
+            var newlang=document.createElement("div");
+            newlang.setAttribute("class", "langItem");
+            //console.log(languages[i]);
+            newlang.innerHTML="["+languages[i]+"]";
+            newlang.setAttribute("localeCode", languages[i]);
+            document.querySelector("#locales").appendChild(newlang);
+        }
+
+        // Getting current locale
+
+        lang="es";
+        var default_locale=self.indexContent[lang];
+        //console.log(default_locale);
+        //console.log(self.indexContent);
+
+        if (typeof (default_locale) === typeof (undefined)){
+            var first_index=Object.keys(self.indexContent)[0];
+            default_locale=self.indexContent[first_index];
+        }
+
+        
+
+
+        // Getting menu
+
+        var menu=self.createMenu(default_locale, "mainMenu");
+        (document.querySelector("#menu")).appendChild(menu);
+
+
+        self.bindEvents();
+
+    } else {
+        document.querySelector("#content").innerHTML="<h2>No entries help documents for this application</h2>";
     }
-
-    // Getting current locale
-
-    lang="es";
-    var default_locale=self.indexContent[lang];
-    //console.log(default_locale);
-    //console.log(self.indexContent);
-
-    if (typeof (default_locale) === typeof (undefined)){
-        var first_index=Object.keys(self.indexContent)[0];
-        default_locale=self.indexContent[first_index];
-    }
-
-    
-
-
-    // Getting menu
-
-    var menu=self.createMenu(default_locale, "mainMenu");
-    (document.querySelector("#menu")).appendChild(menu);
-
-
-    self.bindEvents();
-
-    // TO-DO: Què fem si no existix la carpeta en documents?
     
 
     
