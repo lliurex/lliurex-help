@@ -1,3 +1,9 @@
+lliurex-help (0.2) xenial; urgency=high
+
+  * Fixed 
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Thu, 08 Mar 2018 16:49:50 +0100
+
 lliurex-help (0.1) xenial; urgency=high
 
   * Initial release.
