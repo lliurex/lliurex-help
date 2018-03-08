@@ -1,0 +1,27 @@
+{
+  "main": "index.html",
+  "name": "lliurex-help",
+  "description": "Application",
+  "version": "0.1.0",
+  "keywords": [
+    "application"
+  ],
+  "repository": "",
+  "license": "GPL-3.0",
+  "window": {
+    "title": "LliureX Help",
+    "icon": "lliurex-help.png",
+    "toolbar": false,
+    "frame": true,
+    "width": 1024,
+    "height": 768,
+    "position": "center"
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "chromium-args": "--ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so",
+  "dependencies": {
+    "showdown": "^1.8.6"
+  }
+}

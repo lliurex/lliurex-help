@@ -1,0 +1,16 @@
+Source: lliurex-help
+Section: misc
+Priority: optional
+Maintainer: LliureX Team <lliurex@lliurex.net>
+Build-Depends: llxsrchelper,debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: https://github.com/lliurex/lliurex-help
+#Vcs-Git: git://git.debian.org/collab-maint/lliurex-guard.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/lliurex-guard.git;a=summary
+
+Package: lliurex-help
+Architecture: all
+Depends: ${misc:Depends},nwjs0.21
+Description: LliureX Help
+ A desktop help system for LliureX.
+ 
