@@ -20,7 +20,6 @@
   "webkit": {
     "plugin": true
   },
-  "chromium-args": "--ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so",
   "dependencies": {
     "showdown": "^1.8.6"
   }

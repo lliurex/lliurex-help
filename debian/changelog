@@ -1,3 +1,9 @@
+lliurex-help (0.3) xenial; urgency=high
+
+  * Fixed css
+
+ -- Jose A. Murcia <joamuran@gmail.com>  Thu, 22 Mar 2018 14:05:52 +0100
+
 lliurex-help (0.2) xenial; urgency=high
 
   * Fixed 
