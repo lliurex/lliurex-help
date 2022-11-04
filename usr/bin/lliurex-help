@@ -1,3 +1,10 @@
-#!/bin/bash
-/usr/share/nwjs0.21/nw /usr/share/lliurex-help $*
-~                                                            
+#!/bin/bash                                                        
+if [ -x /usr/share/nwjs0.30/nw ]; then 
+	echo "Launching app with nwjs0.30.5"
+	/usr/share/nwjs0.30/nw /usr/share/lliurex-help $*
+	~
+elif [ -x /usr/share/nwjs0.21/nw ]; then 
+echo "Launching app with nwjs0.21"
+	/usr/share/nwjs0.21/nw /usr/share/lliurex-help $*
+	~
+fi                                                       
