@@ -1,3 +1,9 @@
+lliurex-help (0.5-0lliurex25) noble; urgency=medium
+
+  * Noble release
+
+ -- Juanma1980 <juanma1980@gmail.com>  Fri, 20 Sep 2024 12:47:13 +0200
+
 lliurex-help (0.5) focal; urgency=medium
 
   * Adding node libraries to use with class-jam.
